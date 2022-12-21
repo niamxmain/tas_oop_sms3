@@ -20,4 +20,5 @@ Route::get('/', function () {
 
 Route::get('/sales', [SaleController::class, 'index'])->name('/sales');
 
-Route::get();
+Route::get('/addsale', [SaleController::class, 'addsale'])->name('/addsale');
+Route::post('/insertdata', [SaleController::class, 'insertdata'])->name('/insertdata');

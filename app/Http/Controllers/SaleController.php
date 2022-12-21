@@ -12,4 +12,16 @@ class SaleController extends Controller
         $data = Sale::all();
         return view('sales', compact('data'));
     }
+
+    public function addsale()
+    {
+        return view('addsale');
+    }
+
+    public function insertdata(Request $request)
+    {
+        // dd($request->all());
+        Sale::create($request->all());
+        return redirect(route('/sales'));
+    }
 }

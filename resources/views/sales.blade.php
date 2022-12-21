@@ -13,7 +13,7 @@
     <div class="container">
         <br>
         <h3 class="text-center">Tabel Penjualan</h3>
-        <button type="button" class="btn btn-success">Transaksi baru +</button>
+        <a href="/addsale" class="btn btn-success">Transaksi baru +</a>
         <table class="table table-striped text-center">
             <thead>
                 <tr>
