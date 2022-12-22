@@ -17,8 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+// tampildata senua
 Route::get('/sales', [SaleController::class, 'index'])->name('/sales');
-
+// tambahdata
 Route::get('/addsale', [SaleController::class, 'addsale'])->name('/addsale');
 Route::post('/insertdata', [SaleController::class, 'insertdata'])->name('/insertdata');
+// editdata
+Route::get('/getdata/{id}', [SaleController::class, 'getdata'])->name('/getdata');
+Route::post('/updatedata/{id}', [SaleController::class, 'updatedata'])->name('/updatedata');
+// deletedata
+Route::get('/deletedata/{id}', [SaleController::class, 'deletedata'])->name('/deletedata');

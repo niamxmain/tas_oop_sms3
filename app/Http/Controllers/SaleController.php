@@ -24,4 +24,25 @@ class SaleController extends Controller
         Sale::create($request->all());
         return redirect(route('/sales'));
     }
+
+    public function getdata($id)
+    {
+        $data = Sale::find($id);
+        // dd($data);
+        return view('editdata', compact('data'));
+    }
+
+    public function updatedata(Request $request, $id)
+    {
+        $data = Sale::find($id);
+        $data->update($request->all());
+        return redirect(route('/sales'));
+    }
+
+    public function deletedata($id)
+    {
+        $data = Sale::find($id);
+        $data->delete($id);
+        return redirect(route('/sales'));
+    }
 }

@@ -27,21 +27,24 @@
                 </tr>
             </thead>
             <tbody>
+                <?php
+                $no = 1;
+                ?>
                 @foreach($data as $d)
                 <tr>
-                    <td>{{$d['id']}}</td>
+                    <td><?php echo $no++ ?></td>
                     <td>{{$d['namaPelanggan']}}</td>
                     <td>{{$d['namaProduk']}}</td>
                     <td>{{$d['hargaProduk']}}</td>
                     <td>{{$d['jumlahProduk']}}</td>
                     <td>{{$d['total']}}</td>
                     <td>
-                        <button type="button" class="btn btn-warning">
+                        <a href="/getdata/{{$d->id}}" class="btn btn-warning">
                             Edit
-                        </button>
-                        <button type="button" class="btn btn-danger">
+                        </a>
+                        <a href="/deletedata/{{$d->id}}" class="btn btn-danger">
                             Delete
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 @endforeach
