@@ -22,7 +22,7 @@ class SaleController extends Controller
     {
         // dd($request->all());
         Sale::create($request->all());
-        return redirect(route('/sales'));
+        return redirect(route('/sales'))->with('success', 'Data berhasil ditambahkan');
     }
 
     public function getdata($id)
@@ -36,13 +36,13 @@ class SaleController extends Controller
     {
         $data = Sale::find($id);
         $data->update($request->all());
-        return redirect(route('/sales'));
+        return redirect(route('/sales'))->with('edited', 'Data berhasil diedit');
     }
 
     public function deletedata($id)
     {
         $data = Sale::find($id);
         $data->delete($id);
-        return redirect(route('/sales'));
+        return redirect(route('/sales'))->with('deleted', 'Data berhasil dihapus');
     }
 }
