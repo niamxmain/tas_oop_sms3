@@ -23,6 +23,18 @@
         <br>
         <h3 class="text-center">Tabel Penjualan</h3>
         <a href="/addsale" class="btn btn-success">Transaksi baru +</a>
+        <div class="row mt-2">
+            <div class="col-auto">
+                <div class="input-group rounded">
+                    <form action="/sales" method="get">
+                        <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    </form>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a href="/exportexcel" class="btn" style="background-color: #1d6f42; color:white">Export Excel</a>
+            </div>
+        </div>
         <table class="table table-striped text-center">
             <thead>
                 <tr>
@@ -44,9 +56,9 @@
                     <td><?php echo $no++ ?></td>
                     <td>{{$d->namaPelanggan}}</td>
                     <td>{{$d->namaProduk}}</td>
-                    <td>{{$d->hargaProduk}}</td>
+                    <td>{{"Rp " . number_format($d->hargaProduk,0,',','.')}}</td>
                     <td>{{$d->jumlahProduk}}</td>
-                    <td>{{$d->total}}</td>
+                    <td>{{"Rp " . number_format($d->total,0,',','.')}}</td>
                     <td>
                         <a href="/getdata/{{$d->id}}" class="btn btn-warning">
                             Edit

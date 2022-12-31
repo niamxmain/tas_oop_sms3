@@ -27,3 +27,5 @@ Route::get('/getdata/{id}', [SaleController::class, 'getdata'])->name('/getdata'
 Route::post('/updatedata/{id}', [SaleController::class, 'updatedata'])->name('/updatedata');
 // deletedata
 Route::get('/deletedata/{id}', [SaleController::class, 'deletedata'])->name('/deletedata');
+// export excel
+Route::get('/exportexcel', [SaleController::class, 'exportexcel'])->name('/exportexcel');

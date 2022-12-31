@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SaleExport;
 use App\Models\Sale;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SaleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Sale::all();
+        // $data = Sale::all();
+        if ($request->has('search')) {
+            $data = Sale::where('namaPelanggan', 'like', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Sale::paginate(5);
+        }
         return view('sales', compact('data'));
     }
 
@@ -44,5 +51,10 @@ class SaleController extends Controller
         $data = Sale::find($id);
         $data->delete($id);
         return redirect(route('/sales'))->with('deleted', 'Data berhasil dihapus');
+    }
+
+    public function exportexcel()
+    {
+        return Excel::download(new SaleExport, 'users.xlsx');
     }
 }
