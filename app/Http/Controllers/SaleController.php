@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\SaleExport;
+use App\Imports\SaleImport;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -56,5 +57,15 @@ class SaleController extends Controller
     public function exportexcel()
     {
         return Excel::download(new SaleExport, 'users.xlsx');
+    }
+
+    public function importexcel(Request $request)
+    {
+        $data = $request->file('file');
+        $filename = $data->getClientOriginalName();
+        $data->move('dataexcel', $filename);
+        Excel::import(new SaleImport, \public_path('/dataexcel/' . $filename));
+
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 }

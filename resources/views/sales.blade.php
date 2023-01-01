@@ -34,6 +34,40 @@
             <div class="col-auto">
                 <a href="/exportexcel" class="btn" style="background-color: #1d6f42; color:white">Export Excel</a>
             </div>
+
+
+            <div class="col-auto">
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Import Transaksi
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih File</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="/importexcel" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="file" name="file" id="file" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Choose</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
         <table class="table table-striped text-center">
             <thead>
@@ -48,12 +82,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-                $no = 1;
-                ?>
-                @foreach($data as $d)
+                @foreach($data as $id=>$d)
                 <tr>
-                    <td><?php echo $no++ ?></td>
+                    <td>{{$id + $data->firstItem()}}</td>
                     <td>{{$d->namaPelanggan}}</td>
                     <td>{{$d->namaProduk}}</td>
                     <td>{{"Rp " . number_format($d->hargaProduk,0,',','.')}}</td>
@@ -71,6 +102,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $data->links() }}
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
