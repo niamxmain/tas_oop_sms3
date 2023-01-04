@@ -24,8 +24,16 @@
                                 <input type="text" class="form-control" name="namaPelanggan" id="namaPelanggan" aria-describedby="">
                             </div>
                             <div class="mb-3">
-                                <label for="namaProduk" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" name="namaProduk" id="namaProduk" aria-describedby="">
+                                <!-- <label for="namaProduk" class="form-label">Nama Produk</label>
+                                <input type="text" class="form-control" name="namaProduk" id="namaProduk" aria-describedby=""> -->
+
+                                <select name="" id="">
+                                    @php $day = array("senin", "selasa", "Toyota");
+                                    @endphp @foreach($day as $d)
+                                    <option value="">{{ $d }}</option>
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="mb-3">
                                 <label for="hargaProduk" class="form-label">Harga Produk</label>

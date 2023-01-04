@@ -31,3 +31,5 @@ Route::get('/deletedata/{id}', [SaleController::class, 'deletedata'])->name('/de
 Route::get('/exportexcel', [SaleController::class, 'exportexcel'])->name('/exportexcel');
 // import data excel
 Route::post('/importexcel', [SaleController::class, 'importexcel'])->name('/importexcel');
+// cetak pdf
+Route::get('/cetakpdf', [SaleController::class, 'cetakpdf'])->name('/cetakpdf');

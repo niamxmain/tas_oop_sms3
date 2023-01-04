@@ -7,6 +7,7 @@ use App\Imports\SaleImport;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SaleController extends Controller
 {
@@ -67,5 +68,13 @@ class SaleController extends Controller
         Excel::import(new SaleImport, \public_path('/dataexcel/' . $filename));
 
         return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+    }
+
+    public function cetakpdf()
+    {
+        $data = Sale::all();
+        view()->share('datas', $data);
+        return PDF::loadView('filePDF', $data->toArray())->stream('');
+        // return view('')
     }
 }
