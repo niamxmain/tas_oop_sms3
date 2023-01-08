@@ -19,12 +19,12 @@ class SaleController extends Controller
         } else {
             $data = Sale::paginate(5);
         }
-        return view('sales', compact('data'));
+        return view('sales.sales', compact('data'));
     }
 
     public function addsale()
     {
-        return view('addsale');
+        return view('sales.addsale');
     }
 
     public function insertdata(Request $request)
@@ -38,7 +38,7 @@ class SaleController extends Controller
     {
         $data = Sale::find($id);
         // dd($data);
-        return view('editdata', compact('data'));
+        return view('sales.editdata', compact('data'));
     }
 
     public function updatedata(Request $request, $id)
@@ -74,7 +74,7 @@ class SaleController extends Controller
     {
         $data = Sale::all();
         view()->share('datas', $data);
-        return PDF::loadView('filePDF', $data->toArray())->stream('');
+        return PDF::loadView('sales.filePDF', $data->toArray())->stream('');
         // return view('')
     }
 }

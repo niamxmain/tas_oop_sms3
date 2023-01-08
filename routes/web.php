@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// SALES
 // tampildata senua
 Route::get('/sales', [SaleController::class, 'index'])->name('/sales');
 // tambahdata
@@ -33,3 +35,10 @@ Route::get('/exportexcel', [SaleController::class, 'exportexcel'])->name('/expor
 Route::post('/importexcel', [SaleController::class, 'importexcel'])->name('/importexcel');
 // cetak pdf
 Route::get('/cetakpdf', [SaleController::class, 'cetakpdf'])->name('/cetakpdf');
+
+// PRODUCT
+// tampil produk
+Route::get('/product', [ProductController::class, 'index'])->name('/product');
+// tambah produk
+Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('/addproduct');
+Route::post('/insertdataproduct', [ProductController::class, 'insertdataproduct'])->name('/insertdataproduct');
