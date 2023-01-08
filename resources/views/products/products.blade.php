@@ -96,10 +96,10 @@
                     </td>
                     <td>{{$d->stock}}</td>
                     <td>
-                        <a href="/getdata/{{$d->id}}" class="btn btn-warning">
+                        <a href="/getproduct/{{$d->id}}" class="btn btn-warning">
                             Edit
                         </a>
-                        <a href="#" class="btn btn-danger delete" data-id="{{$d->id}}" data-nama="{{$d->nama}}">
+                        <a href="/deleteproduct/{{$d->id}}" class="btn btn-danger delete" data-id="{{$d->id}}" data-nama="{{$d->nama}}">
                             Delete
                         </a>
                     </td>

@@ -26,27 +26,27 @@ class ProductController extends Controller
     {
         // dd($request->all());
         Product::create($request->all());
-        return redirect(route('/sales'))->with('success', 'Data berhasil ditambahkan');
+        return redirect(route('/products'))->with('success', 'Data berhasil ditambahkan');
     }
 
-    public function getdata($id)
+    public function getproduct($id)
     {
         $data = Product::find($id);
         // dd($data);
-        return view('editdata', compact('data'));
+        return view('products.editproduct', compact('data'));
     }
 
-    public function updatedata(Request $request, $id)
+    public function updateproduct(Request $request, $id)
     {
         $data = Product::find($id);
         $data->update($request->all());
-        return redirect(route('/sales'))->with('edited', 'Data berhasil diedit');
+        return redirect(route('/products'))->with('edited', 'Data berhasil diedit');
     }
 
-    public function deletedata($id)
+    public function deleteproduct($id)
     {
         $data = Product::find($id);
         $data->delete($id);
-        return redirect(route('/sales'))->with('deleted', 'Data berhasil dihapus');
+        return redirect(route('/products'));
     }
 }

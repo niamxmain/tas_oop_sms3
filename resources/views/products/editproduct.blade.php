@@ -17,19 +17,19 @@
                 <hr>
                 <div class="card">
                     <div class="card-body">
-                        <form action="/insertdata" method="POST" enctype="multipart/form-data">
+                        <form action="/updateproduct/{{$data->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" name="nama" id="nama" aria-describedby="">
+                                <input type="text" class="form-control" name="nama" id="nama" value="{{$data->nama}}" aria-describedby="">
                             </div>
                             <div class="mb-3">
                                 <label for="harga" class="form-label">Harga Produk</label>
-                                <input type="number" class="form-control" name="harga" id="harga" aria-describedby="">
+                                <input type="number" class="form-control" name="harga" id="harga" value="{{$data->harga}}" aria-describedby="">
                             </div>
                             <div class="mb-3">
                                 <label for="stock" class="form-label">Stok</label>
-                                <input type="number" class="form-control" name="stock" id="stock" aria-describedby="">
+                                <input type="number" oninput="totalFunc()" class="form-control" name="stock" id="stock" value="{{$data->stock}}" aria-describedby="" readonly>
                             </div>
                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                             <!-- Button trigger modal -->
@@ -70,6 +70,15 @@
         let hargaProduk = document.getElementById('hargaProduk');
         let jumlahProduk = document.getElementById('jumlahProduk');
         let total = document.getElementById('total');
+
+        // total.value = valTotal;
+        function totalFunc() {
+            const hargaProduk = document.getElementById("hargaProduk").value;
+            const jumlahProduk = document.getElementById("jumlahProduk").value;
+            let total = hargaProduk * jumlahProduk
+            document.getElementById("total").placeholder = total;
+            document.getElementById("total").value = total;
+        }
 
         function modal() {
             document.getElementById('namaModal').innerHTML = namaPelanggan.value;

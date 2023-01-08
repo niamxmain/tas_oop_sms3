@@ -38,7 +38,12 @@ Route::get('/cetakpdf', [SaleController::class, 'cetakpdf'])->name('/cetakpdf');
 
 // PRODUCT
 // tampil produk
-Route::get('/product', [ProductController::class, 'index'])->name('/product');
+Route::get('/products', [ProductController::class, 'index'])->name('/products');
 // tambah produk
 Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('/addproduct');
-Route::post('/insertdataproduct', [ProductController::class, 'insertdataproduct'])->name('/insertdataproduct');
+Route::post('/insertdata', [ProductController::class, 'insertdata'])->name('/insertdata');
+// edit data
+Route::get('/getproduct/{id}', [ProductController::class, 'getproduct'])->name('/getproduct');
+Route::post('/updateproduct/{id}', [ProductController::class, 'updateproduct'])->name('/updateproduct');
+// delete product
+Route::get('/deleteproduct/{id}', [ProductController::class, 'deleteproduct'])->name('/deleteproduct');
