@@ -79,6 +79,7 @@
             <thead>
                 <tr>
                     <th scope="col">No</th>
+                    <th scope="col">Kode Produk</th>
                     <th scope="col">Nama Produk</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Stok</th>
@@ -90,6 +91,7 @@
                 @foreach($data as $id=>$d)
                 <tr>
                     <td><?php echo $no++; ?></td>
+                    <td>{{$d->code}}</td>
                     <td>{{$d->nama}}</td>
                     <td>
                         {{"Rp " . number_format($d->harga,0,',','.')}}

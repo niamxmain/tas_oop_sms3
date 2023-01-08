@@ -20,6 +20,10 @@
                         <form action="/updateproduct/{{$data->id}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
+                                <label for="code" class="form-label">Kode Produk</label>
+                                <input type="text" class="form-control" name="code" id="code" value="{{$data->code}}" aria-describedby="">
+                            </div>
+                            <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control" name="nama" id="nama" value="{{$data->nama}}" aria-describedby="">
                             </div>
@@ -27,10 +31,10 @@
                                 <label for="harga" class="form-label">Harga Produk</label>
                                 <input type="number" class="form-control" name="harga" id="harga" value="{{$data->harga}}" aria-describedby="">
                             </div>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="stock" class="form-label">Stok</label>
                                 <input type="number" oninput="totalFunc()" class="form-control" name="stock" id="stock" value="{{$data->stock}}" aria-describedby="" readonly>
-                            </div>
+                            </div> -->
                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                             <!-- Button trigger modal -->
                             <button type="button" onclick="modal()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

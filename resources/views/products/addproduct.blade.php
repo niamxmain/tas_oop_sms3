@@ -20,6 +20,10 @@
                         <form action="/insertdata" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
+                                <label for="code" class="form-label">Kode Produk</label>
+                                <input type="text" class="form-control" name="code" id="code" aria-describedby="">
+                            </div>
+                            <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Produk</label>
                                 <input type="text" class="form-control" name="nama" id="nama" aria-describedby="">
                             </div>
@@ -29,7 +33,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="stock" class="form-label">Stok</label>
-                                <input type="number" class="form-control" name="stock" id="stock" aria-describedby="">
+                                <input type="number" class="form-control" name="stock" id="stock" value="0" aria-describedby="" readonly>
                             </div>
                             <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                             <!-- Button trigger modal -->
@@ -46,6 +50,7 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
+                                            <h5>Kode Produk: <span id="code"></span></h5>
                                             <h5>Nama Produk: <span id="nama"></span></h5>
                                             <h5>Harga: <span id="harga"></span></h5>
                                             <h5>Stok: <span id="stock"></span></h5>
