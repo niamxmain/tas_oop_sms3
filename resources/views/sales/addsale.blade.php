@@ -24,16 +24,23 @@
                                 <input type="text" class="form-control" name="namaPelanggan" id="namaPelanggan" aria-describedby="">
                             </div>
                             <div class="mb-3">
-                                <label for="namaProduk" class="form-label">Nama Produk</label>
-                                <input type="text" class="form-control" name="namaProduk" id="namaProduk" aria-describedby="">
-
-                                <!-- <select name="" id="">
+                                <div class="row g-3">
+                                    <div class="col-auto">
+                                        <label for="code" class="form-label">Kode Produk</label>
+                                        <select class="form-select" name="code" id="code" onchange="changes()" aria-label="Default select example">
+                                            <!-- <option selected disabled>Pilih Kode Produk</option> -->
+                                            @foreach($data as $d)
+                                            <option value="{{$d->id}}">{{$d->code}} - {{$d->nama}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <!-- <select name="" id="">
                                     @php $day = array("senin", "selasa", "Toyota");
                                     @endphp @foreach($day as $d)
                                     <option value="">{{ $d }}</option>
                                     @endforeach
                                 </select> -->
-
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="hargaProduk" class="form-label">Harga Produk</label>
@@ -106,6 +113,12 @@
             document.getElementById('hargaProdukModal').innerHTML = hargaProduk.value;
             document.getElementById('jumlahProdukModal').innerHTML = jumlahProduk.value;
             document.getElementById('totalModal').innerHTML = total.value;
+        }
+
+        // Flexible data by id
+        function changes() {
+            let code = document.getElementById('code').value;
+            console.log(code);
         }
     </script>
 </body>

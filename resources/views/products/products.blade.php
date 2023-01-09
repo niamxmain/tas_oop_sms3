@@ -26,7 +26,7 @@
         <div class="row mt-2">
             <div class="col-auto">
                 <div class="input-group rounded">
-                    <form action="/sales" method="get">
+                    <form action="/products" method="get">
                         <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                     </form>
                 </div>

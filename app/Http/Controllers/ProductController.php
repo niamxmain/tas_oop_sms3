@@ -10,7 +10,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $data = Product::where('namaPelanggan', 'like', '%' . $request->search . '%')->paginate(5);
+            $data = Product::where('nama', 'like', '%' . $request->search . '%')->paginate(5);
         } else {
             $data = Product::paginate(5);
         }

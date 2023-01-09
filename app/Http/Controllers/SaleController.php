@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\SaleExport;
 use App\Imports\SaleImport;
+use App\Models\Product;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,7 +25,8 @@ class SaleController extends Controller
 
     public function addsale()
     {
-        return view('sales.addsale');
+        $data = Product::all();
+        return view('sales.addsale', compact('data'));
     }
 
     public function insertdata(Request $request)
