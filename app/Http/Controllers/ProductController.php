@@ -22,7 +22,7 @@ class ProductController extends Controller
         return view('products.addproduct');
     }
 
-    public function insertdata(Request $request)
+    public function insertdataproducts(Request $request)
     {
         // dd($request->all());
         Product::create($request->all());

@@ -29,7 +29,7 @@ class SaleController extends Controller
         return view('sales.addsale', compact('data'));
     }
 
-    public function insertdata(Request $request)
+    public function insertdatasales(Request $request)
     {
         // dd($request->all());
         Sale::create($request->all());

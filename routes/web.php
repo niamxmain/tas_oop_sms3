@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/sales', [SaleController::class, 'index'])->name('/sales');
 // tambahdata
 Route::get('/addsale', [SaleController::class, 'addsale'])->name('/addsale');
-Route::post('/insertdata', [SaleController::class, 'insertdata'])->name('/insertdata');
+Route::post('/insertdatasales', [SaleController::class, 'insertdatasales'])->name('/insertdatasales');
 // editdata
 Route::get('/getdata/{id}', [SaleController::class, 'getdata'])->name('/getdata');
 Route::post('/updatedata/{id}', [SaleController::class, 'updatedata'])->name('/updatedata');
@@ -41,7 +41,7 @@ Route::get('/cetakpdf', [SaleController::class, 'cetakpdf'])->name('/cetakpdf');
 Route::get('/products', [ProductController::class, 'index'])->name('/products');
 // tambah produk
 Route::get('/addproduct', [ProductController::class, 'addproduct'])->name('/addproduct');
-Route::post('/insertdata', [ProductController::class, 'insertdata'])->name('/insertdata');
+Route::post('/insertdataproducts', [ProductController::class, 'insertdataproducts'])->name('/insertdataproducts');
 // edit data
 Route::get('/getproduct/{id}', [ProductController::class, 'getproduct'])->name('/getproduct');
 Route::post('/updateproduct/{id}', [ProductController::class, 'updateproduct'])->name('/updateproduct');
