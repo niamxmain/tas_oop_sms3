@@ -32,7 +32,20 @@ class SaleController extends Controller
     public function insertdatasales(Request $request)
     {
         // dd($request->all());
-        Sale::create($request->all());
+        // Sale::create($request->all());
+        // $request->validate([
+        //     'namaPelanggan' => 'required|string|max:255',
+        //     'namaProduk' => 'required|string|max:255',
+        //     'description' => 'required',
+        //     'category_id' => 'required|exists:App\Models\Category,id'
+        // ]);
+        Sale::create([
+            'namaPelanggan' => $request->namaPelanggan,
+            'namaProduk' => $request->namaProduk,
+            'hargaProduk' => $request->hargaProduk,
+            'jumlahProduk' => $request->jumlahProduk,
+            'total' => $request->total,
+        ]);
         return redirect(route('/sales'))->with('success', 'Data berhasil ditambahkan');
     }
 

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Purchase extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
     protected $dates = ['created_at', 'updated_at'];
 
-    public function purchase()
+    public function product()
     {
-        return $this->hasMany('App\Models\Purchase');
+        return $this->belongsTo('App\Models\Product');
     }
 }

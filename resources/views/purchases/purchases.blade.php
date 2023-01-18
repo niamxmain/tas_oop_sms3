@@ -1,9 +1,9 @@
-@extends('layout.admin')
+@extends('../layout/admin')
 @section('content')
 <div class="container">
     <br />
-    <h3 class="text-center">Tabel Produk</h3>
-    <a href="/addproduct" class="btn btn-success">Tambah Produk</a>
+    <h3 class="text-center">Tabel Pembelian</h3>
+    <a href="/addpurchase" class="btn btn-success">Tambah Pembelian</a>
     <div class="row mt-2">
         <div class="col-auto">
             <div class="input-group rounded">
@@ -19,7 +19,7 @@
         <div class="col-auto">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Import Produk
+                Import Pembelian
             </button>
 
             <!-- Modal -->
@@ -56,23 +56,22 @@
             <a href="/cetakpdf" class="btn btn-danger">Cetak PDF</a>
         </div>
     </div>
-    <table class="table text-center">
+    <table class="table table-striped text-center">
         <thead>
             <tr>
                 <th scope="col">No</th>
-                <th scope="col">Kode Produk</th>
                 <th scope="col">Nama Produk</th>
-                <!-- <th scope="col">Stok</th> -->
+                <th scope="col">Stok</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
+            @php $no = 1; @endphp
             @foreach($data as $id=>$d)
             <tr>
-                <td>{{$id + $data->firstItem()}}</td>
-                <td>{{$d->code}}</td>
+                <td><?php echo $no++; ?></td>
                 <td>{{$d->nama}}</td>
-                <!-- <td>{{$d->stock}}</td> -->
+                <td>{{$d->stok}}</td>
                 <td>
                     <a href="/getproduct/{{$d->id}}" class="btn btn-warning">
                         Edit
@@ -85,45 +84,6 @@
             @endforeach
         </tbody>
     </table>
-    {{ $data->links() }}
+    <!-- {{ $data->links() }} -->
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- <script>
-        $(".delete").click(function() {
-            let id = $(this).attr("data-id");
-            let nama = $(this).attr("data-nama");
-            swal({
-                title: "Hapus Data?",
-                text: "Kamu yakin ingin hapus data " + nama,
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willDelete) => {
-                if (willDelete) {
-                    setInterval(() => {
-                        window.location = "/deletedata/" + id;
-                    }, 1500);
-                    swal("Data berhasil dihapus", {
-                        icon: "success",
-                        timer: 3000,
-                    });
-                } else {
-                    swal("Data tidak jadi dihapus");
-                }
-            });
-        });
-    </script>
-    <script>
-        @if(Session::has('success'))
-        toastr.success("{{Session::get('success')}}");
-        @elseif(Session::has('edited'))
-        toastr.success("{{Session::get('edited')}}");
-        @elseif(Session::has('deleted'))
-        toastr.warning("{{Session::get('deleted')}}");
-        @endif
-    </script> -->
 @endsection
